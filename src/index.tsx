@@ -8,6 +8,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App user={{ username: "", id: "" }} />
+    <App />
   </React.StrictMode>
 );

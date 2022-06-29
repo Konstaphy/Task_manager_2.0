@@ -1,25 +1,18 @@
-import React, { useState } from "react";
-import { ICommonUser, UserType } from "../commonInterfaces/user.interfaces";
+import React from "react";
 import { Header } from "./header/header";
 import { Main } from "./main/main";
 import { Nav } from "./nav/nav";
+import { useStore } from "effector-react";
+import { AppStore } from "../stores/app";
 
-interface IAppProps {
-  user: ICommonUser;
-}
-
-export const UserRoleContext = React.createContext<
-  Partial<[UserType, React.Dispatch<React.SetStateAction<UserType>>]>
->([]);
-
-export const App: React.FC<IAppProps> = () => {
+export const App: React.FC = () => {
+  const $appStore = useStore(AppStore);
   return (
-    <UserRoleContext.Provider value={useState<UserType>(UserType.CLIENT)}>
-      <div className="App">
-        <Header />
-        <Main />
-        <Nav />
-      </div>
-    </UserRoleContext.Provider>
+    <div className="App">
+      <Header />
+      <Main />
+      <Nav />
+      {$appStore.currentUser?.username}
+    </div>
   );
 };

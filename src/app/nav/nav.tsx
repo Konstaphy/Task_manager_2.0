@@ -1,7 +1,5 @@
-import { useContext } from "react";
-import { UserRoleContext } from "../app";
+import React from "react";
 
-export const Nav = () => {
-  const [role] = useContext(UserRoleContext);
-  return <nav role="nav">{role} nav</nav>;
+export const Nav: React.FC = () => {
+  return <nav role="nav">nav</nav>;
 };
